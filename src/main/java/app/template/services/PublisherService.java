@@ -2,10 +2,6 @@ package app.template.services;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.Channel;
-import jakarta.inject.Inject;
-import org.apache.http.annotation.Contract;
-
-
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.TimeoutException;
