@@ -1,4 +1,4 @@
-package app.template.models;
+package app.template.contracts;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

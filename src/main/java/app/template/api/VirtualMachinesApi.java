@@ -1,11 +1,12 @@
 package app.template.api;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
-import app.template.models.ListVirtualMachines;
+import app.template.contracts.ListVirtualMachines;
 import app.template.services.CloudStackService;
 import app.template.services.PublisherService;
+import app.template.services.VirtualMachineService;
 
 
 @Path("/cloud")
@@ -19,11 +20,8 @@ public class VirtualMachinesApi {
         ListVirtualMachines vm = new ListVirtualMachines();
         vm.setName(vmName);
         vm.setListAll(true);
-        String vmRequest = payloadMapper(vm);
 
-        System.out.println(vmRequest);
-
-        String response = cs.executeCloudStackRequest("listVirtualMachines", vmRequest);
+        String response = VirtualMachineService.listVirtualMachines(vm);
         vm.listVirtualMachineResponseHandler(response);
 
         System.out.println(vm.virtualMachinesList);
@@ -31,31 +29,6 @@ public class VirtualMachinesApi {
         publisher(response);
 
         return Response.ok(response).build();
-    }
-
-    @PUT
-    @Path("/{vmName}")
-    public Response updateVirtualMachine(
-            @HeaderParam("x-application-id") String applicationId,
-            @PathParam("vmName") String vmName) throws JsonProcessingException {
-        ListVirtualMachines vm = new ListVirtualMachines();
-        vm.setName(vmName);
-        vm.setListAll(true);
-        String vmRequest = payloadMapper(vm);
-
-        System.out.println(vmRequest);
-        String response = cs.executeCloudStackRequest("listVirtualMachines", vmRequest);
-
-        publisher(response);
-
-        return Response.ok(response).build();
-    }
-
-    private String payloadMapper(Object requestModel) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        String requestJsonString = objectMapper.writeValueAsString(requestModel);
-
-        return requestJsonString;
     }
 
     private void publisher(String message) {
