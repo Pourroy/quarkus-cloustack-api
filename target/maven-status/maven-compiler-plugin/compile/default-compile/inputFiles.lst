@@ -1,0 +1,7 @@
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/services/VirtualMachineService.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/api/VirtualMachinesApi.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/services/PublisherService.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/contracts/UpdateVirtualMachines.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/services/CloudStackService.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/contracts/ListVirtualMachines.java
+/home/ruanafonso/github/quarkus-cloustack-api/src/main/java/app/template/api/ControlApi.java
